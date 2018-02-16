@@ -22,24 +22,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-/* Route::get('/materiels', function (Request $request) {
+Route::get('/materiels', function (Request $request) {
     return Materiels::all();
 });
-Route::put('materiels/{id}', 'MaterielController@update');
+Route::put('materiels/{id}', 'MaterielsController@update'); 
 
 Route::get('/ecoles', function (Request $request) {
     return Ecoles::all();
-}); */
+}); 
 
-Route::post('/reservations', 'ProfessorsController@store'); 
+Route::post('/professors', 'ProfessorsController@store'); 
 
-/*Route::get('/reservations', function (Request $request) {
+Route::get('/reservations', function (Request $request) {
     return Reservations::all();
-});
-Route::put('reservations/{id}', 'ReservationController@update');
-Route::delete('reservations/{id}', 'ReservationController@destroy');
+});  //affichage ok, modifier affichage clé étrangère
+Route::put('reservations/{id}', 'ReservationsController@update');
+Route::delete('reservations/{id}', 'ReservationsController@destroy'); 
 
-Route::post('/associations', 'AssocierController@store'); */
+Route::post('/associations', 'AssociationsController@store'); 
 
 
 

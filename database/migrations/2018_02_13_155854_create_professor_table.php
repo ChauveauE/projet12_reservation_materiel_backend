@@ -13,7 +13,7 @@ class CreateProfessorTable extends Migration
      */
     public function up()   // creer la table
     {
-        Schema::create('professor', function (Blueprint $table) {
+        Schema::create('professors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
@@ -30,6 +30,6 @@ class CreateProfessorTable extends Migration
      */
     public function down()   // supprimer la table
     {
-        Schema::dropIfExists('professor');
+        Schema::dropIfExists('professors');
     }
 }

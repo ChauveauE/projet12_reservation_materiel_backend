@@ -13,7 +13,7 @@ class CreateReserverTable extends Migration
      */
     public function up()
     {
-        Schema::create('reserver', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
             $table->integer('quantiteReserv');
@@ -21,9 +21,9 @@ class CreateReserverTable extends Migration
             $table->integer('idM')->unsigned();
             $table->timestamps();
         });
-        Schema::table('reserver', function (Blueprint $table){
-            $table->foreign('idP')->references('id')->on('professor');
-            $table->foreign('idM')->references('id')->on('materiel');
+        Schema::table('reservations', function (Blueprint $table){
+            $table->foreign('idP')->references('id')->on('professors');
+            $table->foreign('idM')->references('id')->on('materiels');
         });
     }
 
@@ -34,6 +34,6 @@ class CreateReserverTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reserver');
+        Schema::dropIfExists('reservations');
     }
 }

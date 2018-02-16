@@ -13,7 +13,7 @@ class CreateEcoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('ecole', function (Blueprint $table) {
+        Schema::create('ecoles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nomEcole');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateEcoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ecole');
+        Schema::dropIfExists('ecoles');
     }
 }

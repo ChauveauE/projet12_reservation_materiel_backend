@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Materiels;
 
-class MaterielController extends Controller
+class MaterielsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,7 +46,7 @@ class MaterielController extends Controller
      */
     public function show($id)
     {
-        return view('materiel', ['materiel' => User::findOrFail($id)]);
+        //return view('materiel', ['materiel' => User::findOrFail($id)]);
     }
 
     /**

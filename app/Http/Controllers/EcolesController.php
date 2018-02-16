@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Reservations;
+use App\Ecoles;
 
-class ReservationController extends Controller
+class EcolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return Reservations::all();
+        return Ecoles::all();
     }
 
     /**
@@ -70,17 +69,7 @@ class ReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id=$request->id;
-        $reservation=Reservations::find($id);
-        $date=$request->date;
-        $reservation->date=$date;
-        $quantiteReserv=$request->quantiteReserv;
-        $reservation->quantiteReserv=$quantiteReserv;
-        $idP=$request->idP;
-        $reservation->idP=$idP;
-        $idE=$request->idE;
-        $reservation->idE=$idE;
-        $reservation->save();
+        //
     }
 
     /**
@@ -91,8 +80,6 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        $reservation = Reservations::findOrFail($request->id);
-        $reservation->delete();
-        return $request->id;
+        //
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Ecoles;
+use App\Associations;
 
-class EcoleController extends Controller
+class AssociationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class EcoleController extends Controller
      */
     public function index()
     {
-        return Ecoles::all();
+        //
     }
 
     /**
@@ -35,7 +35,11 @@ class EcoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $association = new Associations;
+        $association->idP=$request->idP;
+        $association->idE=$request->idE;
+        $association->save();
+        return Associations::find($association->id);
     }
 
     /**

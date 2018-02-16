@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Associations;
+use App\Http\Controllers\Controller;
+use App\Reservations;
 
-class AssocierController extends Controller
+class ReservationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class AssocierController extends Controller
      */
     public function index()
     {
-        //
+        return Reservations::all();
     }
 
     /**
@@ -35,11 +36,7 @@ class AssocierController extends Controller
      */
     public function store(Request $request)
     {
-        $association = new Associations;
-        $association->idP=$request->idP;
-        $association->idE=$request->idE;
-        $association->save();
-        return Associations::find($association->id);
+        //
     }
 
     /**
@@ -73,7 +70,17 @@ class AssocierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $id=$request->id;
+        $reservation=Reservations::find($id);
+        $date=$request->date;
+        $reservation->date=$date;
+        $quantiteReserv=$request->quantiteReserv;
+        $reservation->quantiteReserv=$quantiteReserv;
+        $idP=$request->idP;
+        $reservation->idP=$idP;
+        $idM=$request->idM;
+        $reservation->idM=$idM;
+        $reservation->save();
     }
 
     /**
@@ -82,8 +89,10 @@ class AssocierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $reservation = Reservations::findOrFail($request->id);
+        $reservation->delete();
+        return $request->id;
     }
 }

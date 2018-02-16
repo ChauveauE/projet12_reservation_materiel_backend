@@ -13,15 +13,15 @@ class CreateAssocierTable extends Migration
      */
     public function up()
     {
-        Schema::create('associer', function (Blueprint $table) {
+        Schema::create('associations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idP')->unsigned();
             $table->integer('idE')->unsigned();
             $table->timestamps();
         });
-        Schema::table('associer', function (Blueprint $table){
-            $table->foreign('idP')->references('id')->on('professor');
-            $table->foreign('idE')->references('id')->on('ecole');
+        Schema::table('associations', function (Blueprint $table){
+            $table->foreign('idP')->references('id')->on('professors');
+            $table->foreign('idE')->references('id')->on('ecoles');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateAssocierTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('associer');
+        Schema::dropIfExists('associations');
     }
 }

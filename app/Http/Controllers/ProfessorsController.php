@@ -36,7 +36,7 @@ class ProfessorsController extends Controller
     public function store(Request $request)
     {
         $professor = new Professors;
-        $professor = Professors::findOrFail($request->id);
+        //$professor = Professors::findOrFail($request->id);
         $professor->nom=$request->nom;
         $professor->prenom=$request->prenom;
         $professor->email=$request->email;
