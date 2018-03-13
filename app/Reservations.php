@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservations extends Model
 {
-    protected $casts = [
-    	'idP' => 'string'
-    ];
+    public function materiels(){
+        return $this->belongsToMany(Materiels::class, 'reservations_materiels', 'reservations_id', 'materiels_id');
+    }
 }

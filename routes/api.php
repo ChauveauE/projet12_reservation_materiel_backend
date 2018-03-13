@@ -5,6 +5,7 @@ use App\Materiels;
 use App\Ecoles;
 use App\Reservations;
 use App\Associations;
+use App\ReservationsMateriels;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,11 @@ Route::get('/reservations', function (Request $request) {
 });  //affichage ok, modifier affichage clé étrangère
 Route::put('reservations/{id}', 'ReservationsController@update');
 Route::delete('reservations/{id}', 'ReservationsController@destroy');
+
+Route::get('/reservationsmateriels', function (Request $request) {
+    return ReservationsMateriels::all();
+});
+
 Route::post('/associations', 'AssociationsController@store'); 
 
 
