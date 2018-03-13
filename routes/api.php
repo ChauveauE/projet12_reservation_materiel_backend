@@ -37,8 +37,7 @@ Route::get('/reservations', function (Request $request) {
     return Reservations::all();
 });  //affichage ok, modifier affichage clé étrangère
 Route::put('reservations/{id}', 'ReservationsController@update');
-Route::delete('reservations/{id}', 'ReservationsController@destroy'); 
-
+Route::delete('reservations/{id}', 'ReservationsController@destroy');
 Route::post('/associations', 'AssociationsController@store'); 
 
 
