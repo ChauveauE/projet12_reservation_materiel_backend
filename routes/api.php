@@ -22,7 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 Route::get('/materiels', function (Request $request) {
     return Materiels::all();
 });
@@ -43,6 +42,7 @@ Route::delete('reservations/{id}', 'ReservationsController@destroy');
 Route::get('/reservationsmateriels', function (Request $request) {
     return ReservationsMateriels::all();
 });
+Route::delete('reservationsmateriels/{id}', 'ReservationsMaterielsController@destroy');
 
 Route::post('/associations', 'AssociationsController@store'); 
 
