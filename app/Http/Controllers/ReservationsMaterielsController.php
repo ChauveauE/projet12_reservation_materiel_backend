@@ -36,7 +36,12 @@ class ReservationsMaterielsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservationsmateriels = new ReservationsMateriels;
+        $reservationsmateriels->reservations_id=$request->reservations_id;
+        $reservationsmateriels->materiels_id=$request->materiels_id;
+        $reservationsmateriels->quantiteReserv=$request->quantiteReserv;
+        $reservationsmateriels->save();
+        return ReservationsMateriels::find($reservationsmateriels->id);
     }
 
     /**

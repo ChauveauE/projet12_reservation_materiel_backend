@@ -22,28 +22,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//API matériels
+Route::post('/materiels', 'MaterielsController@store');
 Route::get('/materiels', function (Request $request) {
     return Materiels::all();
 });
 Route::put('materiels/{id}', 'MaterielsController@update'); 
 
+//API écoles
 Route::get('/ecoles', function (Request $request) {
     return Ecoles::all();
 }); 
 
+//API professors
 Route::post('/professors', 'ProfessorsController@store'); 
 
+//API réservations
 Route::get('/reservations', function (Request $request) {
     return Reservations::all();
-});  //affichage ok, modifier affichage clé étrangère
+}); 
 Route::put('reservations/{id}', 'ReservationsController@update');
 Route::delete('reservations/{id}', 'ReservationsController@destroy');
 
+//API Réservations Matériels
+//Route::post('/reservationsmateriels', 'ReservationsMaterielsController@store');
 Route::get('/reservationsmateriels', function (Request $request) {
     return ReservationsMateriels::all();
 });
-Route::delete('reservationsmateriels/{id}', 'ReservationsMaterielsController@destroy');
+//Route::delete('reservationsmateriels/{id}', 'ReservationsMaterielsController@destroy');
 
+//API associations
 Route::post('/associations', 'AssociationsController@store'); 
 
 

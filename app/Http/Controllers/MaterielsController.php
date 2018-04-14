@@ -35,7 +35,11 @@ class MaterielsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $materiel = new Materiels;
+        $materiel->libelle=$request->libelle;
+        $materiel->quantiteDispo=$request->quantiteDispo;
+        $materiel->save();
+        return Materiels::find($materiel->id);
     }
 
     /**
