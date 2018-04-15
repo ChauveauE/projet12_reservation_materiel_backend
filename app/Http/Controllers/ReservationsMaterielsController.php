@@ -15,7 +15,8 @@ class ReservationsMaterielsController extends Controller
      */
     public function index()
     {
-        return ReservationsMateriels::all();
+        $reservationsmateriels = ReservationsMateriels::all();
+        return view('reservationsmateriels', ['reservationsmateriels' => $reservationsmateriels]);
     }
 
     /**

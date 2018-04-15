@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/connexions', function () {
+//     return view('connexions');
+// });
 
 Auth::routes();
 
@@ -30,7 +33,7 @@ Route::post('/professors', 'ProfessorsController@store')->name('saveprofessors')
 
 //API réservations
 Route::get('/reservations', 'ReservationsController@index')->name('reservations'); 
-Route::put('reservations/{id}', 'ReservationsController@update')->name('updatereservations');
+//Route::put('reservations/{id}', 'ReservationsController@update')->name('updatereservations');
 Route::delete('reservations/{id}', 'ReservationsController@destroy')->name('deletereservations');
 
 //API Réservations Matériels
@@ -40,12 +43,3 @@ Route::get('/reservationsmateriels', 'ReservationsMaterielsController@index')->n
 
 //API associations
 Route::post('/associations', 'AssociationsController@store')->name('saveassociations'); 
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/addBooking', 'AddBookingController@index')->name('addbooking');
-Route::post('/addBooking', 'AddBookingController@send')->name('savebooking');
