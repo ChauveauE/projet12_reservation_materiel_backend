@@ -5,17 +5,20 @@
     <div>
         <h2> Récapitulatif de la réservation </h2>
         <ul>
-            <div class="col-xs-4 col-xs-offset-4">
-                <li v-for="reservation in reservations" :key="reservation.id">
-                    <fieldset class="marge">
-                        date de la réservation: <br>
-                        / matériel réservé: <br>
-                        / quantité réservée: <br>
-                        <button class="supprimer">Supprimer</button>
-                    </fieldset>
-                </li>
-            </div>
-            <button class="btnvalidation">Valider la réservation</button>
+            <form action="{{ route('deletereservations') }}" method="DELETE">
+            @csrf
+                <div class="col-xs-4 col-xs-offset-4">
+                    <li v-for="reservation in reservations" :key="reservation.id">
+                        <fieldset class="marge">
+                            date de la réservation: <br>
+                            / matériel réservé: <br>
+                            / quantité réservée: <br>
+                            <button class="supprimer">Supprimer</button>
+                        </fieldset>
+                    </li>
+                </div>
+                <button class="btnvalidation">Valider la réservation</button>
+            </form>
         </ul>
     </div>
 @endsection 

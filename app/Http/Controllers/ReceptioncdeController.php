@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Reservations;
+use App\Receptioncde;
+use App\Materiels;
 
-class ReservationsController extends Controller
+class ReceptioncdeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-        return view('reservations');
+        return view('receptioncde');
     }
 
     /**
@@ -36,7 +36,11 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $materiel = new Materiels;
+        // $materiel->libelle=$request->libelle;
+        // $materiel->quantiteDispo=$request->quantiteDispo;
+        // $materiel->save();
+        // return redirect()->route('savereceptioncde');
     }
 
     /**
@@ -70,17 +74,7 @@ class ReservationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id=$request->id;
-        $reservation=Reservations::find($id);
-        $date=$request->date;
-        $reservation->date=$date;
-        $quantiteReserv=$request->quantiteReserv;
-        $reservation->quantiteReserv=$quantiteReserv;
-        $idP=$request->idP;
-        $reservation->idP=$idP;
-        $idM=$request->idM;
-        $reservation->idM=$idM;
-        $reservation->save();
+        //
     }
 
     /**
@@ -89,10 +83,8 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $reservation = Reservations::findOrFail($request->id);
-        $reservation->delete();
-        return $request->id;
+        //
     }
 }

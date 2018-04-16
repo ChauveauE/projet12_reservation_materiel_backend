@@ -25,11 +25,14 @@ Route::post('/materiels', 'MaterielsController@store')->name('savemateriels');
 Route::get('/materiels', 'MaterielsController@index')->name('materiels');
 Route::put('materiels/{id}', 'MaterielsController@update')->name('updatemateriels'); 
 
+Route::get('/receptioncde', 'ReceptioncdeController@index')->name('receptioncde');
+Route::post('/receptioncde', 'ReceptioncdeController@store')->name('savereceptioncde');
+
 //API écoles
-Route::get('/ecoles', 'EcolesController@index')->name('ecoles'); 
+//Route::get('/ecoles', 'EcolesController@index')->name('ecoles'); 
 
 //API professors
-Route::post('/professors', 'ProfessorsController@store')->name('saveprofessors'); 
+//Route::post('/professors', 'ProfessorsController@store')->name('saveprofessors'); 
 
 //API réservations
 Route::get('/reservations', 'ReservationsController@index')->name('reservations'); 
@@ -43,3 +46,8 @@ Route::get('/reservationsmateriels', 'ReservationsMaterielsController@index')->n
 
 //API associations
 Route::post('/associations', 'AssociationsController@store')->name('saveassociations'); 
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/createaccount', 'CreateAccountController@index')->name('createaccount');
+Route::post('/createaccount', 'CreateAccountController@store')->name('createaccount.store');

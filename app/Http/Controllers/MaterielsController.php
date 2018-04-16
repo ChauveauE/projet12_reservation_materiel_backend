@@ -14,7 +14,7 @@ class MaterielsController extends Controller
      */
     public function index()
     {
-        return Materiels::all();
+        return view('materiels');
     }
 
     /**
@@ -39,7 +39,8 @@ class MaterielsController extends Controller
         $materiel->libelle=$request->libelle;
         $materiel->quantiteDispo=$request->quantiteDispo;
         $materiel->save();
-        return Materiels::find($materiel->id);
+        //return Materiels::find($materiel->id);
+        return redirect()->route('savemateriels');
     }
 
     /**

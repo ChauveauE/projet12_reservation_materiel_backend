@@ -2,18 +2,21 @@
 @extends('layouts.app')
 
 @section('content') 
-<div>
-    <h2> Saisir la réception de la commande </h2>
-    <ul>
-        <label for="libelle" id="libelle">nombre de produits réceptionnés :</label> 
-        <input type="text" class="nbProduitReceptionne"><br><br>
-        <label for="libelle" id="libelle">libellé :</label> 
-        <input type="text" class="libelle">
-        <label for="quantiteDispo" id="quantiteDispo">/ quantité réceptionnée :</label> 
-        <input type="text" class="quantiteDispo"> <br><br>
-    </ul>
-    <button class="btnsimple">Valider la saisie</button>
-</div>    
+    <div>
+        <h2> Saisir la réception de la commande </h2>
+        <ul>
+            <form action="{{ route('savemateriels') }}" method="POST">
+            @csrf
+                <label for="produitRecept" id="produitRecept">nombre de produits réceptionnés :</label> 
+                <input type="text" class="nbProduitReceptionne"><br><br>
+                <label for="libelle" id="libelle">libellé :</label> 
+                <input type="text" class="libelle" id="libelle">
+                <label for="quantiteDispo" id="quantiteDispo">/ quantité réceptionnée :</label> 
+                <input type="text" class="quantiteDispo" id="quantiteDispo"> <br><br>
+                <button class="btnsimple" type="submit">Valider la saisie</button>
+            </form>
+        </ul>   
+    </div>    
 @endsection 
 
 <style>

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Reservations;
+use App\User;
 
-class ReservationsController extends Controller
+class CreateAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,28 +14,28 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-        return view('reservations');
+        return view('auth/register');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $$r
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $r->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+        User::create([
+            'name' => $r->name,
+            'email' => $r->email,
+            'password' => bcrypt($r->password),
+        ]);
+        return redirect()->home();
     }
 
     /**
@@ -70,17 +69,7 @@ class ReservationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id=$request->id;
-        $reservation=Reservations::find($id);
-        $date=$request->date;
-        $reservation->date=$date;
-        $quantiteReserv=$request->quantiteReserv;
-        $reservation->quantiteReserv=$quantiteReserv;
-        $idP=$request->idP;
-        $reservation->idP=$idP;
-        $idM=$request->idM;
-        $reservation->idM=$idM;
-        $reservation->save();
+        //
     }
 
     /**
@@ -89,10 +78,8 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $reservation = Reservations::findOrFail($request->id);
-        $reservation->delete();
-        return $request->id;
+        //
     }
 }
