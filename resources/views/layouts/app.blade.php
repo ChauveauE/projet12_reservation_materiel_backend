@@ -30,7 +30,7 @@
                         @auth
                         @if (Auth::user()->id == 1)
                                 <li><a class="nav-link" href="{{ route('createaccount') }}">Création compte</a></li>
-                                <li><a class="nav-link" href="{{ route('receptioncde') }}">Saisie commande</a></li>
+                                <li><a class="nav-link" href="{{ route('nbproduitreceptionne') }}">Saisie commande</a></li>
                             @else
                                 <li><a class="nav-link" href="{{ route('materiels') }}">Sélection matériels</a></li>
                                 <li><a class="nav-link" href="{{ route('reservations') }}">Visualisation de la réservation</a></li>
@@ -74,5 +74,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    @yield('js')
 </body>
 </html>

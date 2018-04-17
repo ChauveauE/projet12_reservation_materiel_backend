@@ -21,12 +21,12 @@ Route::get('/', function () {
 Auth::routes();
 
 //API matériels
-Route::post('/materiels', 'MaterielsController@store')->name('savemateriels');
 Route::get('/materiels', 'MaterielsController@index')->name('materiels');
+Route::post('/materiels', 'MaterielsController@store')->name('savemateriels');
 Route::put('materiels/{id}', 'MaterielsController@update')->name('updatemateriels'); 
 
 Route::get('/receptioncde', 'ReceptioncdeController@index')->name('receptioncde');
-Route::post('/receptioncde', 'ReceptioncdeController@store')->name('savereceptioncde');
+Route::get('/nbproduitreceptionne', 'NbProduitReceptionneController@index')->name('nbproduitreceptionne');
 
 //API écoles
 //Route::get('/ecoles', 'EcolesController@index')->name('ecoles'); 

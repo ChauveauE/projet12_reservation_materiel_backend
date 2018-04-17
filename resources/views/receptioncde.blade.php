@@ -7,12 +7,12 @@
         <ul>
             <form action="{{ route('savemateriels') }}" method="POST">
             @csrf
-                <label for="produitRecept" id="produitRecept">nombre de produits réceptionnés :</label> 
-                <input type="text" class="nbProduitReceptionne"><br><br>
-                <label for="libelle" id="libelle">libellé :</label> 
-                <input type="text" class="libelle" id="libelle">
-                <label for="quantiteDispo" id="quantiteDispo">/ quantité réceptionnée :</label> 
-                <input type="text" class="quantiteDispo" id="quantiteDispo"> <br><br>
+                @for ($i = 0; $i < $nbProduitReceptionne ; $i++)
+                    <label for="libelle" id="libelle">libellé :</label> 
+                    <input type="text" class="libelle" name="libelle{{$i}}">
+                    <label for="quantiteDispo" id="quantiteDispo">/ quantité réceptionnée :</label> 
+                    <input type="text" class="quantiteDispo" name="quantiteDispo{{$i}}"> <br><br>
+                @endfor
                 <button class="btnsimple" type="submit">Valider la saisie</button>
             </form>
         </ul>   
@@ -26,7 +26,7 @@
     .btnsimple{
         font-style: italic;
         border-radius: 10px;
-        <background-color:dimgre class=""></background-color:dimgre>y;
+        <background-color:dimgre class=""></background-color:dimgrey>;
         margin-left: 300px;
         font-size: 100%;
     }

@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Materiels;
+use App\NbProduitReceptionne;
 
-class MaterielsController extends Controller
+class NbProduitReceptionneController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($nbProduitReceptionne = null, Request $request)
     {
-        $materiels = Materiels::all();
-        return view('materiels', ['materiels' => $materiels]);
+        $nbProduitReceptionne = $request->input("nbProduitReceptionne");
+        return view('nbproduitreceptionne',['nbProduitReceptionne'=>$nbProduitReceptionne]);
     }
 
     /**
@@ -36,22 +36,7 @@ class MaterielsController extends Controller
      */
     public function store(Request $request)
     {
-        $i=0;
-        while (true){
-            $name = "libelle".$i;
-            $quantityName = "quantiteDispo".$i;
-            if (is_null($request->$name)){
-                break;
-            }
-            $materiel = new Materiels;
-            $materiel->libelle=$request->$name;
-            $materiel->quantiteDispo=$request->$quantityName;
-            $materiel->save();
-            $i++;
-        }
-        
-        //return Materiels::find($materiel->id);
-        return redirect('home');
+        //
     }
 
     /**
@@ -62,7 +47,7 @@ class MaterielsController extends Controller
      */
     public function show($id)
     {
-        //return view('materiel', ['materiel' => User::findOrFail($id)]);
+        //
     }
 
     /**
@@ -85,13 +70,7 @@ class MaterielsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id=$request->id;
-        $materiel=Materiels::find($id);
-        $libelle=$request->libelle;
-        $materiel->libelle=$libelle;
-        $quantiteDispo=$request->quantiteDispo;
-        $materiel->quantiteDispo=$quantiteDispo;
-        $materiel->save();
+        //
     }
 
     /**

@@ -13,9 +13,10 @@ class ReceptioncdeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $r)
     {
-        return view('receptioncde');
+        $nbProduitReceptionne = $r->nbProduitReceptionne;
+        return view('receptioncde', compact('nbProduitReceptionne'));
     }
 
     /**

@@ -81,15 +81,13 @@
                         <a href="{{ route('register') }}">Création compte</a>
                     @else
                         <a href="{{ route('login') }}">Connexion</a>
-                        
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div>
-                    <img class="app" src="tableau.jpg"> 
-                <!-- <img src="{{'tableau.jpg'}}"> -->
+                    <img src="{{asset('img/tableau.jpg')}}" height="300px"> <br><br><br>
                 </div>
                 <div class="title m-b-md">
                     Bienvenue sur le site de réservation !

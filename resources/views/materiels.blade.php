@@ -20,7 +20,7 @@ https://www.packtpub.com/mapt/book/web_development/9781782162827/2/ch02lvl1sec27
                     /quantité disponible:
                     <option value="{{ $materiel->id }}">{{ $materiel->quantiteDispo }}</option>
                     / quantité souhaitée: 
-                    <input type="text" class="quantiteReserv"> <br><br>
+                    <input type="text" class="quantiteReserv" name="quantiteReserv"> <br><br>
                 @endforeach
                 <button class="btnsimple"> Valider la saisie </button><br><br>
                 <button class="btnvalidation">Visualiser la réservation</button>
