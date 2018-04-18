@@ -1,4 +1,3 @@
-<!-- Faire une boucle avec le numéro saisi-->  
 @extends('layouts.app')
 
 @section('content') 
@@ -26,7 +25,7 @@
     .btnsimple{
         font-style: italic;
         border-radius: 10px;
-        <background-color:dimgre class=""></background-color:dimgrey>;
+        background-color:dimgrey;
         margin-left: 300px;
         font-size: 100%;
     }
@@ -35,9 +34,6 @@
         width: 150px;
     }
     .quantiteDispo{
-        width: 30px;
-    }
-    .nbProduitReceptionne{
         width: 30px;
     }
 </style>

@@ -22,8 +22,7 @@ Auth::routes();
 
 //API matériels
 Route::get('/materiels', 'MaterielsController@index')->name('materiels');
-Route::post('/materiels', 'MaterielsController@store')->name('savemateriels');
-Route::put('materiels/{id}', 'MaterielsController@update')->name('updatemateriels'); 
+Route::post('/materiels', 'MaterielsController@store')->name('savemateriels'); 
 
 //API nombre de produit réceptionné 
 Route::get('/nbproduitreceptionne', 'NbProduitReceptionneController@index')->name('nbproduitreceptionne');
@@ -41,13 +40,7 @@ Route::post('/createaccount', 'CreateAccountController@store')->name('createacco
 //API réservations
 Route::get('/reservations', 'ReservationsController@index')->name('reservations');
 Route::post('/reservations', 'ReservationsController@store')->name('savereservations'); 
-//Route::put('reservations/{id}', 'ReservationsController@update')->name('updatereservations');
 Route::delete('reservations/{id}', 'ReservationsController@destroy')->name('deletereservations');
-
-// //API Réservations Matériels
-// //Route::post('/reservationsmateriels', 'ReservationsMaterielsController@store')->name('savereservationsmateriels');
-// Route::get('/reservationsmateriels', 'ReservationsMaterielsController@index')->name('reservationsmateriels');
-// //Route::delete('reservationsmateriels/{id}', 'ReservationsMaterielsController@destroy')->name('deletereservationsmateriels');
 
 //API prévue pour évolution
 

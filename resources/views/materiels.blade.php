@@ -1,6 +1,3 @@
-<!-- dans le tableau foreach déclarer materiels-->
-<!-- menu auto complexion
-https://www.packtpub.com/mapt/book/web_development/9781782162827/2/ch02lvl1sec27/creating-an-autocomplete-text-input -->
 @extends('layouts.app')
 
 @section('content')

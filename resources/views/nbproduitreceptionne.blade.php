@@ -21,7 +21,7 @@
     .btnsimple{
         font-style: italic;
         border-radius: 10px;
-        <background-color: dimgrey;
+        background-color: dimgrey;
         margin-left: 50px;
         font-size: 100%;
     }
@@ -33,11 +33,3 @@
         width: 30px;
     }
 </style>
-@section('js')
-<script>
-$("#nbProduitReceptionne").on('keyup', function(){
-    var lines = $(this).val();
-    alert(lines);
-});
-</script>
-@endsection
