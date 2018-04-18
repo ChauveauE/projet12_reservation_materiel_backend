@@ -14,9 +14,9 @@
             @csrf
                 <div class="col-xs-4 col-xs-offset-4">
                     <fieldset class="marge">
-                        date de la réservation: {{ $reservation->date }} <br>
-                        / matériel réservé: {{ $reservation->libelle }} <br>
-                        / quantité réservée: {{ $reservation->quantiteReserv }} <br>
+                        date de la réservation: {{ $reservations->date }} <br>
+                        / matériel réservé: {{ $materiels->libelle }} <br>
+                        / quantité réservée: {{ $reservations->quantiteReserv }} <br>                        
                         <button class="supprimer">Supprimer</button>
                     </fieldset>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Reservations;
+use App\Materiels;
 
 class ReservationsController extends Controller
 {
@@ -15,8 +16,7 @@ class ReservationsController extends Controller
      */
     public function index(Request $request)
     {
-        //return view('reservations');
-        $reservation = $request->input("reservation");
+        $reservation = Reservations::all();
         return view('reservations',['reservation'=>$reservation]);
     }
 
@@ -44,7 +44,8 @@ class ReservationsController extends Controller
         $reservation->idP=$request->idP;
         $reservation->materiels_id=$request->materiels;
         $reservation->save();
-        return view('reservations', ['reservations'=>$reservation]);
+        $materiels=Materiels::find($request->materiels);
+        return view('reservations', ['reservations'=>$reservation, 'materiels'=>$materiels]);
     }
 
     /**
