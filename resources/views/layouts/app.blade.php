@@ -33,7 +33,6 @@
                                 <li><a class="nav-link" href="{{ route('nbproduitreceptionne') }}">Saisie commande</a></li>
                             @else
                                 <li><a class="nav-link" href="{{ route('materiels') }}">Sélection matériels</a></li>
-                                <li><a class="nav-link" href="{{ route('reservations') }}">Visualisation de la réservation</a></li>
                             @endif
                         @endauth  
                     </ul>

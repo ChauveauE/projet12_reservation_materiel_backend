@@ -5,12 +5,21 @@ https://www.packtpub.com/mapt/book/web_development/9781782162827/2/ch02lvl1sec27
 
 @section('content')
     <div>
-        <h2> Sélectionner le matériel à réserver </h2>
+        <h2> Sélectionner le matériel à réserver </h2><br>
+        @if ($errors->any())
+            <div class="">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <ul>
             <form action="{{ route('savereservations') }}" method="POST">
             @csrf
                 <label for="date" id="date">Date:</label>
-                <input type="date" name="date" exept="dimanche" required/><br>
+                <input type="date" name="date" exept="dimanche" value="{{old('date')}}" required/><br>
                 <label for="materiels" id="materiels">Matériel:</label>
                 <select name="materiels">
                     @foreach ($materiels as $materiel)
@@ -18,7 +27,7 @@ https://www.packtpub.com/mapt/book/web_development/9781782162827/2/ch02lvl1sec27
                     @endforeach
                 </select><br>
                 <label for="quantiteReserv" id="quantiteReserv">Quantité à réserver:</label>
-                <input type="text" class="quantiteReserv" name="quantiteReserv">
+                <input type="text" value="{{old('quantiteReserv')}}" class="quantiteReserv" name="quantiteReserv">
                 <input type="hidden" name="idP" value="{{ Auth::user()->id }}"> <br>       
                 <button class="btnsimple"> Valider la saisie </button><br><br>
             </form>

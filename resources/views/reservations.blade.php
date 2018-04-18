@@ -1,8 +1,5 @@
-<!-- créer la bdd: insertion OU juste commande-->
-<!-- php artisan migrate:fresh --seed -->
 <!-- où est ce qu'on met le css?-->
-<!-- gérer la suppression -->
-<!-- affichage des valeurs du get -->
+<!-- vérif quantiteDispo-->
 
 @extends('layouts.app')
 
@@ -10,23 +7,24 @@
     <div>
         <h2> Récapitulatif de la réservation </h2>
         <ul>
-            <form action="{{ route('reservations') }}" method="GET">
-            @csrf
-                <div class="col-xs-4 col-xs-offset-4">
-                    <fieldset class="marge">
-                        date de la réservation: {{ $reservations->date }} <br>
-                        / matériel réservé: {{ $materiels->libelle }} <br>
-                        / quantité réservée: {{ $reservations->quantiteReserv }} <br>                        
-                        <button class="supprimer">Supprimer</button>
-                    </fieldset>
-                </div>
-                <button class="btnvalidation" name="nvlReserv">
-                    <a href="{{ route('materiels') }}">Passer une nouvelle réservation</a>
-                </button>
-                <button class="btnvalidation" name="retourAccueil">
-                    <a href="{{ route('home') }}">Réservation terminée</a>
-                </button>
-            </form>
+            <div class="col-xs-4 col-xs-offset-4">
+                <fieldset class="marge">
+                    date de la réservation: {{ $reservations->date }} <br>
+                    / matériel réservé: {{ $materiels->libelle }} <br>
+                    / quantité réservée: {{ $reservations->quantiteReserv }} <br>
+                    <form action="{{ route('deletereservations', ["id"=>$reservations->id]) }}" method="POST">
+                    @csrf 
+                        {{method_field('delete')}}                
+                        <button type="submit" class="supprimer">Supprimer</button>
+                    </form>
+                </fieldset>
+            </div>
+            <button class="btnvalidation" name="nvlReserv">
+                <a href="{{ route('materiels') }}">Passer une nouvelle réservation</a>
+            </button>
+            <button class="btnvalidation" name="retourAccueil">
+                <a href="{{ route('home') }}">Réservation terminée</a>
+            </button>
         </ul>
     </div>
 @endsection 

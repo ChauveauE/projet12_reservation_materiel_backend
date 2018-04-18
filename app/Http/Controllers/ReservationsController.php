@@ -38,14 +38,31 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        $reservation = new Reservations;
+        $materiels=Materiels::find($request->materiels);
+        $reservation = new Reservations();
         $reservation->date=$request->date;
         $reservation->quantiteReserv=$request->quantiteReserv;
         $reservation->idP=$request->idP;
         $reservation->materiels_id=$request->materiels;
+        if ($this->aAssezQuantite($materiels, $request->quantiteReserv)){
+            $this->majQuantiteDispo($materiels, $request->quantiteReserv);
+            return view('reservations', ['reservations'=>$reservation, 'materiels'=>$materiels]);
+        }else{
+            $request->flash();
+            return back()->withErrors(['La quantité disponible est inférieure à celle demandée !']);
+        }
         $reservation->save();
-        $materiels=Materiels::find($request->materiels);
-        return view('reservations', ['reservations'=>$reservation, 'materiels'=>$materiels]);
+    }
+
+    private function majQuantiteDispo(Materiels $materiel, int $quantiteReserve)
+    {
+        $materiel->quantiteDispo-=$quantiteReserve;
+        $materiel->save();
+    }
+
+    private function aAssezQuantite(Materiels $materiel, int $quantiteReserve): bool
+    {
+        return $materiel->quantiteDispo >= $quantiteReserve;
     }
 
     /**
@@ -79,17 +96,7 @@ class ReservationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id=$request->id;
-        $reservation=Reservations::find($id);
-        $date=$request->date;
-        $reservation->date=$date;
-        $quantiteReserv=$request->quantiteReserv;
-        $reservation->quantiteReserv=$quantiteReserv;
-        $idP=$request->idP;
-        $reservation->idP=$idP;
-        $idM=$request->idM;
-        $reservation->idM=$idM;
-        $reservation->save();
+        //
     }
 
     /**
@@ -98,10 +105,9 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request, Reservations $reservation)
     {
-        $reservation = Reservations::findOrFail($request->id);
         $reservation->delete();
-        return $request->id;
+        return redirect()->route('materiels');
     }
 }

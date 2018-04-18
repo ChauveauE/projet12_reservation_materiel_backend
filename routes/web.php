@@ -44,16 +44,15 @@ Route::post('/reservations', 'ReservationsController@store')->name('savereservat
 //Route::put('reservations/{id}', 'ReservationsController@update')->name('updatereservations');
 Route::delete('reservations/{id}', 'ReservationsController@destroy')->name('deletereservations');
 
-//API écoles
-//Route::get('/ecoles', 'EcolesController@index')->name('ecoles'); 
-
-//API professors
-//Route::post('/professors', 'ProfessorsController@store')->name('saveprofessors'); 
-
 // //API Réservations Matériels
 // //Route::post('/reservationsmateriels', 'ReservationsMaterielsController@store')->name('savereservationsmateriels');
 // Route::get('/reservationsmateriels', 'ReservationsMaterielsController@index')->name('reservationsmateriels');
 // //Route::delete('reservationsmateriels/{id}', 'ReservationsMaterielsController@destroy')->name('deletereservationsmateriels');
+
+//API prévue pour évolution
+
+//API écoles
+//Route::get('/ecoles', 'EcolesController@index')->name('ecoles'); 
 
 //API associations
 //Route::post('/associations', 'AssociationsController@store')->name('saveassociations'); 
