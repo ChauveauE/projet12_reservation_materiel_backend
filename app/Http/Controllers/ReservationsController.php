@@ -13,9 +13,11 @@ class ReservationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('reservations');
+        //return view('reservations');
+        $reservation = $request->input("reservation");
+        return view('reservations',['reservation'=>$reservation]);
     }
 
     /**
@@ -36,7 +38,13 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservation = new Reservations;
+        $reservation->date=$request->date;
+        $reservation->quantiteReserv=$request->quantiteReserv;
+        $reservation->idP=$request->idP;
+        $reservation->materiels_id=$request->materiels;
+        $reservation->save();
+        return view('reservations', ['reservations'=>$reservation]);
     }
 
     /**

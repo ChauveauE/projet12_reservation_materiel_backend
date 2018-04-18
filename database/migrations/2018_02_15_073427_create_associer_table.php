@@ -20,7 +20,7 @@ class CreateAssocierTable extends Migration
             $table->timestamps();
         });
         Schema::table('associations', function (Blueprint $table){
-            $table->foreign('idP')->references('id')->on('professors');
+            $table->foreign('idP')->references('id')->on('users');
             $table->foreign('idE')->references('id')->on('ecoles');
         });
     }

@@ -16,8 +16,11 @@ class CreateReserverTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
+            $table->integer('quantiteReserv'); 
             $table->integer('idP')->unsigned()->nullable();
-            $table->foreign('idP')->references('id')->on('professors');            
+            $table->foreign('idP')->references('id')->on('users');
+            $table->integer('materiels_id')->unsigned();
+            $table->foreign('materiels_id')->references('id')->on('materiels');           
             $table->timestamps();
         });
     }
