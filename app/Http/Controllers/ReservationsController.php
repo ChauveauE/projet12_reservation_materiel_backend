@@ -36,12 +36,12 @@ class ReservationsController extends Controller
         $reservation->materiels_id=$request->materiels;
         if ($this->aAssezQuantite($materiels, $request->quantiteReserv)){
             $this->majQuantiteDispo($materiels, $request->quantiteReserv);
-            return view('reservations', ['reservations'=>$reservation, 'materiels'=>$materiels]);
+            $reservation->save();
+            return view('reservations', ['reservations'=>$reservation->fresh(), 'materiels'=>$materiels]);
         }else{
             $request->flash();
             return back()->withErrors(['La quantité disponible est inférieure à celle demandée !']);
         }
-        $reservation->save();
     }
 
     private function majQuantiteDispo(Materiels $materiel, int $quantiteReserve)
@@ -61,8 +61,13 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Reservations $reservation)
+    public function destroy(Request $request, int $reservationId)
     {
+        $reservation = Reservations::find($reservationId);
+        if (is_null($reservation)) abort(404);
+        $materiel = Materiels::find($reservation->materiels_id);
+        $materiel->quantiteDispo+=$reservation->quantiteReserv;
+        $materiel->save();
         $reservation->delete();
         return redirect()->route('materiels');
     }

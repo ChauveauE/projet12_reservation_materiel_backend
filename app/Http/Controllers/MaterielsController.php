@@ -34,9 +34,13 @@ class MaterielsController extends Controller
             if (is_null($request->$name)){
                 break;
             }
-            $materiel = new Materiels;
-            $materiel->libelle=$request->$name;
-            $materiel->quantiteDispo=$request->$quantityName;
+            $materiel = Materiels::where('libelle', $request->$name)->first();
+            if (is_null($materiel)){
+                $materiel = new Materiels();
+                $materiel->libelle=$request->$name;
+                $materiel->quantiteDispo=0;
+            }
+            $materiel->quantiteDispo+=$request->$quantityName;
             $materiel->save();
             $i++;
         }
