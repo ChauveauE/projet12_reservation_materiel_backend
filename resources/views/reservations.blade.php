@@ -25,7 +25,7 @@
                 <a href="{{ route('materiels') }}">Passer une nouvelle réservation</a>
             </button>
             <button class="btnvalidation" name="retourAccueil">
-                <a href="{{ route('home') }}">Réservation terminée</a>
+                <a href="{{ route('home') }}">Réservation terminée / Retour à l'accueil</a>
             </button>
         </ul>
     </div>

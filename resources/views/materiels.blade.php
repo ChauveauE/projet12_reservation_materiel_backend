@@ -28,6 +28,9 @@
                 <input type="hidden" name="idP" value="{{ Auth::user()->id }}"> <br>       
                 <button class="btnsimple"> Valider la saisie </button><br><br>
             </form>
+            <button class="retourAccueil" name="retourAccueil">
+                <a href="{{ route('home') }}">Retour à l'accueil</a>
+            </button>
         </ul>
     </div>
 @endsection 
@@ -54,5 +57,12 @@
     }
     select{
         height: 30px;
+    }
+    .retourAccueil{
+        font-style: italic;
+        border-radius: 10px;
+        font-size: 125%;
+        margin-top: 15px;
+        color: black;
     }
 </style>
