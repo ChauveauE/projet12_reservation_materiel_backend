@@ -18,7 +18,7 @@
                 <label for="date" id="date">Date:</label>
                 <input type="date" name="date" exept="dimanche" value="{{old('date')}}" required/><br>
                 <label for="materiels" id="materiels">Matériel:</label>
-                <select name="materiels">
+                <select name="materiels" id="materielSelector">
                     @foreach ($materiels as $materiel)
                         <option value="{{ $materiel->id }}">{{ $materiel->libelle }}</option>
                     @endforeach
@@ -66,3 +66,11 @@
         color: black;
     }
 </style>
+
+@section('js')
+<script>
+$(document).ready(function() {
+    $('#materielSelector').select2();
+});
+</script>
+@endsection
